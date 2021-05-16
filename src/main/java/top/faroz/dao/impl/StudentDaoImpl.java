@@ -1,10 +1,12 @@
 package top.faroz.dao.impl;
 
+import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
 import top.faroz.dao.StudentDao;
 import top.faroz.pojo.Student;
 import top.faroz.util.ResultSetUtil;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +23,35 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         String sql = "select * from student";
         ResultSet rs = query(sql, null);
         List<Student> students = ResultSetUtil.ResultSetToBean(rs, Student.class,14);
+        close();
+        return students;
+    }
+
+    @Override
+    public List<Student> search(String stuName, String StuNo, Integer sex) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("select * from student where 1=1 ");
+        List params = new ArrayList();
+        if (stuName!=null && stuName.length()>0) {
+            params.add(stuName);
+            sb.append(" and stuname like ? ");
+        }
+        if (StuNo!=null && StuNo.length()>0) {
+            params.add(StuNo);
+            sb.append(" and stuno=? ");
+        }
+        if (sex!=-1) {
+            params.add(sex);
+            sb.append(" and sex=? ");
+        }
+
+        String sql = sb.toString();
+
+        System.out.println("获得的SQL语句为:"+sql);
+
+        ResultSet rs = query(sql, params);
+        List<Student> students = ResultSetUtil.ResultSetToBean(rs, Student.class);
+        close();
         return students;
     }
 }

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface StudentDao {
     List<Student> queryAll();
+    List<Student> search(String stuName, String StuNo,Integer sex);
 }

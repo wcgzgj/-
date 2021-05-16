@@ -13,49 +13,33 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @ClassName StudentServlet
+ * @ClassName SearchServlet
  * @Description TODO
  * @Author FARO_Z
- * @Date 2021/5/16 下午8:27
+ * @Date 2021/5/16 下午11:46
  * @Version 1.0
  **/
-@WebServlet(name = "student",urlPatterns = "/Educational/student")
-public class StudentServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/Educational/student/search")
+public class SearchServlet extends HttpServlet {
 
     private StudentService studentService = new StudentServiceImpl();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String method = req.getParameter("method");
-        switch (method) {
-            case "list":
-                list(req,resp);
-                return;
-            case "search":
-                search(req,resp);
-                return;
-            default:
-                return;
-        }
-    }
-
-    protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Student> students = studentService.queryAll();
-        req.setAttribute("stuList",students);
-        req.getRequestDispatcher("student/list.jsp").forward(req,resp);
-    }
-
-    protected void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("进入了Servlet!!!");
 
         String stuName = req.getParameter("stuName");
         String stuNo = req.getParameter("stuNo");
         String sex = req.getParameter("sex");
+
+        System.out.println("stuName:"+stuName);
+
+
         List<Student> students = studentService.search(stuName, stuNo, Integer.parseInt(sex));
 
         System.out.println("查询出的结果为:"+students);
 
         req.setAttribute("stuList",students);
-        req.getRequestDispatcher("student/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("/Educational/student/list.jsp").forward(req,resp);
     }
 }

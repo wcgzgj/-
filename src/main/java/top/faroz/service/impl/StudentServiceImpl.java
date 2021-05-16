@@ -23,4 +23,9 @@ public class StudentServiceImpl implements StudentService {
         List<Student> students = studentDao.queryAll();
         return students;
     }
+
+    @Override
+    public List<Student> search(String stuName, String StuNo, Integer sex) {
+        return studentDao.search(stuName,StuNo,sex);
+    }
 }

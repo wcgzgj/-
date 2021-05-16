@@ -41,18 +41,18 @@
 
 	<div class="cztable">
 		<div>
-				  <form action="#" method="get">
+				  <form action="/Educational/student/search" method="get">
                     学生名称:
-					<input type="text"  />
+					<input type="text" name="stuName"  />
                      学生学号:
-					<input type="text"  />
+					<input type="text" name="stuNo" />
 					性别:
-					<select>
-							<option>--请选择--</option>
-							<option>男</option>
-							<option>女</option>
+					<select name="sex">
+							<option value="-1">--请选择--</option>
+							<option value="1">男</option>
+							<option value="0">女</option>
 						</select>
-					<input type="button" value="查询" />
+					<input type="submit" value="查询" />
 
                 </form>
 
@@ -77,6 +77,7 @@
 						<td align="center">${stu.sex==1?'男':'女'}</td>
 						<td align="center">${stu.phone}</td>
 						<td align="center">${stu.profession}</td>
+						<%--格式化输出时间--%>
 						<td align="center">
 							<fmt:formatDate value="${stu.regDate}" pattern="yyyy-MM-dd"></fmt:formatDate>
 						</td>
