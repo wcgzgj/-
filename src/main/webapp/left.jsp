@@ -50,7 +50,7 @@
 								<img height=9  src="./img/menu_icon.gif" width=9>
 							</td>
                             <td>
-								<a class=menuchild href="Educational/student/list.jsp" target="right">学生管理</a>
+								<a class=menuchild href="Educational/student?method=list" target="right">学生管理</a>
 							</td>
 						</tr>
 						

@@ -1,6 +1,11 @@
 package top.faroz.dao.impl;
 
 import top.faroz.dao.StudentDao;
+import top.faroz.pojo.Student;
+import top.faroz.util.ResultSetUtil;
+
+import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * @ClassName StudentDaoImpl
@@ -11,4 +16,11 @@ import top.faroz.dao.StudentDao;
  **/
 public class StudentDaoImpl extends BaseDao implements StudentDao {
 
+    @Override
+    public List<Student> queryAll() {
+        String sql = "select * from student";
+        ResultSet rs = query(sql, null);
+        List<Student> students = ResultSetUtil.ResultSetToBean(rs, Student.class,14);
+        return students;
+    }
 }
