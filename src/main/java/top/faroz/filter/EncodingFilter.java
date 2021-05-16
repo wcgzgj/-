@@ -26,6 +26,7 @@ public class EncodingFilter implements Filter {
         // 全局设置编码方式
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
+
         //放行
         chain.doFilter(req,resp);
     }

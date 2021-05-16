@@ -1,6 +1,7 @@
 package top.faroz.web;
 
 import javafx.beans.value.WritableObjectValue;
+import javafx.scene.layout.BackgroundRepeat;
 import top.faroz.pojo.Users;
 import top.faroz.service.UsersService;
 import top.faroz.service.impl.UsersServiceImpl;
@@ -33,6 +34,8 @@ public class UsersServlet extends HttpServlet {
                 login(req,resp);
                 break;
             case "logout":
+                logout(req,resp);
+                break;
             default:
                 return;
         }
@@ -45,6 +48,7 @@ public class UsersServlet extends HttpServlet {
         System.out.println("user信息为:"+user);
         //登录失败
         if (user==null) {
+            resp.setContentType("text/html;charset=utf-8");
             PrintWriter writer = resp.getWriter();
             writer.println("<script>location.href='login.jsp';alert('用户名或密码不正确！');</script>");
         } else {
@@ -54,5 +58,16 @@ public class UsersServlet extends HttpServlet {
             //跳转到主页面
             resp.sendRedirect("index.jsp");
         }
+    }
+
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //清空session
+        req.getSession().invalidate();
+
+        //跳转到登录页面
+        // resp.sendRedirect("login.jsp");
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter writer = resp.getWriter();
+        writer.println("<script>top.location.href='login.jsp';alert('退出成功!');</script>");
     }
 }
