@@ -40,6 +40,10 @@ public class SearchServlet extends HttpServlet {
         System.out.println("查询出的结果为:"+students);
 
         req.setAttribute("stuList",students);
+        req.setAttribute("stuName",stuName);
+        req.setAttribute("stuNo",stuNo);
+        req.setAttribute("sex",sex);
+
         req.getRequestDispatcher("/Educational/student/list.jsp").forward(req,resp);
     }
 }

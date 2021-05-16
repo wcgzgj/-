@@ -43,14 +43,14 @@
 		<div>
 				  <form action="/Educational/student/search" method="get">
                     学生名称:
-					<input type="text" name="stuName"  />
+					<input type="text" name="stuName" value="${stuName}" />
                      学生学号:
-					<input type="text" name="stuNo" />
+					<input type="text" name="stuNo" value="${stuNo}"/>
 					性别:
 					<select name="sex">
-							<option value="-1">--请选择--</option>
-							<option value="1">男</option>
-							<option value="0">女</option>
+							<option value="-1" ${sex==-1?'selected':''}>--请选择--</option>
+							<option value="1" ${sex==1?'selected':''}>男</option>
+							<option value="0" ${sex==0?'selected':''}>女</option>
 						</select>
 					<input type="submit" value="查询" />
 
@@ -72,7 +72,7 @@
 
 				<c:forEach items="${stuList}" varStatus="st" var="stu">
 					<tr id="product1">
-						<td align="center">${stu.stuId}</td>
+						<td align="center">${stu.stuNo}</td>
 						<td align="center">${stu.stuName}</td>
 						<td align="center">${stu.sex==1?'男':'女'}</td>
 						<td align="center">${stu.phone}</td>
