@@ -31,4 +31,13 @@ public class Grade {
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
     }
+
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "gradeId=" + gradeId +
+                ", gradeName='" + gradeName + '\'' +
+                ", studentList=" + studentList +
+                '}';
+    }
 }

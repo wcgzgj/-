@@ -23,6 +23,9 @@ public class ResultSetUtil {
      * @return
      */
     public static<T> List<T> ResultSetToBean(ResultSet rs, Class<T> c) {
+        if(rs==null) {
+            return null;
+        }
         List<T> list = new ArrayList<>();
         try {
             while (rs.next()) {

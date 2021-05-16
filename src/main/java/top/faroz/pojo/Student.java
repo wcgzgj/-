@@ -12,13 +12,13 @@ public class Student {
     private String registered;
     private String address;
     private String profession;
-    private String idNumber;
+    private String idNumber; // 身份证号
     private String politics;
-    private Date regDate;
-    private Integer state;
-    private String introdction;
-    private Integer gid;
-    private Grade grade;
+    private Date regDate; //登记时间
+    private Integer state;// 状态： 0 在读    1 删除
+    private String introdction; //简介
+    private Integer gid; //年级编号
+    private Grade grade; //对应的年级信息
 
     public Integer getStuId() {
         return stuId;
@@ -146,5 +146,27 @@ public class Student {
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "stuId=" + stuId +
+                ", stuName='" + stuName + '\'' +
+                ", stuNo='" + stuNo + '\'' +
+                ", sex=" + sex +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", registered='" + registered + '\'' +
+                ", address='" + address + '\'' +
+                ", profession='" + profession + '\'' +
+                ", idNumber='" + idNumber + '\'' +
+                ", politics='" + politics + '\'' +
+                ", regDate=" + regDate +
+                ", state=" + state +
+                ", introdction='" + introdction + '\'' +
+                ", gid=" + gid +
+                ", grade=" + grade +
+                '}';
     }
 }
