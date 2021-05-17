@@ -1,6 +1,11 @@
 package top.faroz.service.impl;
 
+import top.faroz.dao.GradeDao;
+import top.faroz.dao.impl.GradeDaoImpl;
+import top.faroz.pojo.Grade;
 import top.faroz.service.GradeService;
+
+import java.util.List;
 
 /**
  * @ClassName GradeServiceImpl
@@ -10,4 +15,11 @@ import top.faroz.service.GradeService;
  * @Version 1.0
  **/
 public class GradeServiceImpl implements GradeService {
+
+    private GradeDao gradeDao = new GradeDaoImpl();
+
+    @Override
+    public List<Grade> queryAll() {
+        return gradeDao.queryAll();
+    }
 }

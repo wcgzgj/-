@@ -1,6 +1,5 @@
 package top.faroz.dao.impl;
 
-import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
 import top.faroz.dao.StudentDao;
 import top.faroz.pojo.Student;
 import top.faroz.util.ResultSetUtil;
@@ -47,7 +46,6 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
 
         String sql = sb.toString();
 
-        System.out.println("获得的SQL语句为:"+sql);
 
         ResultSet rs = query(sql, params);
         List<Student> students = ResultSetUtil.ResultSetToBean(rs, Student.class);
