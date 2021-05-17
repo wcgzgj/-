@@ -39,15 +39,27 @@ public class StudentServlet extends HttpServlet {
         }
     }
 
+    /**
+     * 列表展示接口
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Student> students = studentService.queryAll();
         req.setAttribute("stuList",students);
         req.getRequestDispatcher("student/list.jsp").forward(req,resp);
     }
 
+    /**
+     * 查询接口
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("进入了Servlet!!!");
-
         String stuName = req.getParameter("stuName");
         String stuNo = req.getParameter("stuNo");
         String sex = req.getParameter("sex");

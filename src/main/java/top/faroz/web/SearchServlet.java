@@ -26,19 +26,16 @@ public class SearchServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("进入了Servlet!!!");
 
         String stuName = req.getParameter("stuName");
         String stuNo = req.getParameter("stuNo");
         String sex = req.getParameter("sex");
 
-        System.out.println("stuName:"+stuName);
 
 
         List<Student> students = studentService.search(stuName, stuNo, Integer.parseInt(sex));
 
-        System.out.println("查询出的结果为:"+students);
-
+        //将查询条件，再放入 req中，是为了在前端输入框中，显示用户之前的输入
         req.setAttribute("stuList",students);
         req.setAttribute("stuName",stuName);
         req.setAttribute("stuNo",stuNo);
