@@ -9,11 +9,11 @@ public class Student {
     private Integer sex;
     private String phone;
     private String email;
-    private String registered;
+    private String registered; //户籍所在地
     private String address;
     private String profession;
     private String idNumber; // 身份证号
-    private String politics;
+    private String politics; //政治面貌
     private Date regDate; //登记时间
     private Integer state;// 状态： 0 在读    1 删除
     private String introdction; //简介

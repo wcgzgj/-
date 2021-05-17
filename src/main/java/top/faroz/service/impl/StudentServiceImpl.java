@@ -28,4 +28,10 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> search(String stuName, String StuNo, Integer sex) {
         return studentDao.search(stuName,StuNo,sex);
     }
+
+    @Override
+    public void add(Student student) {
+        studentDao.add(student);
+    }
+
 }

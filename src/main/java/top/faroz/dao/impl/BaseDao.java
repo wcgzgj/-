@@ -176,6 +176,11 @@ public class BaseDao {
      * @return
      */
     protected <T> boolean insert(Object o,Class<T> c) {
+       return insert(o,c,c.getDeclaredFields().length);
+    }
+
+
+    protected <T> boolean insert(Object o,Class<T> c,int len) {
         T obj = null;
         if (o!=null) {
             obj = (T) o;
@@ -185,15 +190,15 @@ public class BaseDao {
                 .append(c.getSimpleName().toLowerCase())
                 .append(" ")
                 .append("values(");
+
         Field[] fields = c.getDeclaredFields();
-        int len = fields.length;
         for (int i = 0; i <len-1; i++) {
             sb.append("?,");
         }
         sb.append("?)");
         //获得 sql 语句
         String sql=sb.toString();
-        //System.out.println(sql);
+        System.out.println("sql语句为："+sql);
 
         //获取所有参数
         List params = new ArrayList();
@@ -203,6 +208,7 @@ public class BaseDao {
             Object tmp=null;
             try {
                 tmp = fields[i].get(obj);
+                System.out.println("获取的属性值为:"+tmp);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -215,9 +221,9 @@ public class BaseDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         return res;
     }
+
 
     /**
      * 根据主键进行删除

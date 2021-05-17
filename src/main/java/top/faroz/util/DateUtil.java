@@ -1,5 +1,7 @@
 package top.faroz.util;
 
+import java.util.Date;
+
 /**
  * @ClassName DateUtil
  * @Description TODO
@@ -9,12 +11,17 @@ package top.faroz.util;
  **/
 public class DateUtil {
     public static java.util.Date sqlDate2JavaDate(java.sql.Date sqlDate) {
+        if (sqlDate==null) {
+            return new Date();
+        }
         return new java.util.Date(sqlDate.getTime());
     }
 
     public static java.sql.Date javaDate2SqlDate(java.util.Date utilDate) {
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        return sqlDate;
+        if (utilDate==null) {
+            return new java.sql.Date(new java.util.Date().getTime());
+        }
+        return new java.sql.Date(utilDate.getTime());
     }
 
 

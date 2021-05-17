@@ -23,19 +23,19 @@ INSERT INTO `grade` VALUES ('5', '五年级');
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `stuid` int NOT NULL AUTO_INCREMENT,
-  `stuname` varchar(5) DEFAULT NULL,
-  `stuno` varchar(10) DEFAULT NULL,
+  `stuname` varchar(255) DEFAULT NULL,
+  `stuno` varchar(255) DEFAULT NULL,
   `sex` int DEFAULT NULL,
-  `phone` varchar(11) DEFAULT NULL,
-  `email` varchar(15) DEFAULT NULL,
-  `registered` varchar(10) DEFAULT NULL,
-  `address` varchar(10) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `registered` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `profession` varchar(10) DEFAULT NULL,
-  `idnumber` varchar(20) DEFAULT NULL,
-  `politics` varchar(10) DEFAULT NULL,
+  `idnumber` varchar(255) DEFAULT NULL,
+  `politics` varchar(255) DEFAULT NULL,
   `regdate` date DEFAULT NULL,
   `state` int DEFAULT NULL,
-  `introduction` varchar(50) DEFAULT NULL,
+  `introduction` varchar(255) DEFAULT NULL,
   `gid` int DEFAULT NULL,
   PRIMARY KEY (`stuid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;

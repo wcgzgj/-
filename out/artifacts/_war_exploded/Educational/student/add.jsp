@@ -27,26 +27,26 @@
         </div>
 </div>
 <div class="cztable">
-    <form action="list.jsp" method="post">
+    <form action="/Educational/student/addStu" method="post">
 	<table border="1" width="100%" class="table_a">
                 <tr  width="120px;">
                     <td width="10%">学号：<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text"  name="f_goods_image" value="" />
+						<input type="text"  name="stuNo" value="" />
 					</td>
                 </tr>
 
                 <tr  width="120px;">
                     <td>姓名<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text"  name="f_goods_image" value="杨XX" />
+						<input type="text"  name="stuName"/>
 					</td>
                 </tr>
               
                 <tr>
                     <td>班级<span style="color:red">*</span>：</td>
                     <td>
-                        <select>
+                        <select name="gid">
                             <c:forEach items="${grades}" var="grade">
                                 <option value="${grade.gradeId}">${grade.gradeName}</option>
                             </c:forEach>
@@ -56,7 +56,8 @@
                 <tr>
                     <td>性别<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="radio" name="gender" checked value="1" />男 <input type="radio" name="gender" value="0"/>女
+                        <input type="radio" name="sex" checked value="1" />男
+                        <input type="radio" name="sex" value="0"/>女
                     </td>
                 </tr>
 
@@ -64,47 +65,47 @@
 				<tr>
                     <td>EMAIL：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="1332@126.com" />
+                        <input type="text" name="email"/>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>联系电话：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="13333333333" />
+                        <input type="text" name="phone"/>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>户口所在地：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="北京"  />
+                        <input type="text" name="registered" />
                     </td>                
                 </tr>
 
 				<tr>
                     <td>住址：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="朝阳" />
+                        <input type="text" name="address" value="朝阳" />
                     </td>                
                 </tr>
 				<tr>
                     <td>政治面貌：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="党员" />
+                        <input type="text" name="politics" value="党员" />
                     </td>                
                 </tr>
 				<tr>
                     <td>身份证号：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="110111111111111111111" />
+                        <input type="text" name="idNumber" value="110111111111111111111" />
                     </td>                
                 </tr>
 				
 				<tr>
                     <td>专业：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="java" />
+                        <input type="text" name="profession" value="java" />
                     </td>                
                 </tr>
 					
@@ -112,7 +113,7 @@
 				<tr>
                     <td>简介<span style="color:red">*</span>：</td>
                     <td>
-                        <textarea>一个新开辟领域的探讨，探讨摸索</textarea>
+                        <textarea name="introdction">一个新开辟领域的探讨，探讨摸索</textarea>
                     </td>
                 </tr>
 				<tr>

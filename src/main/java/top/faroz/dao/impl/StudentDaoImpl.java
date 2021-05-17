@@ -52,4 +52,9 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         close();
         return students;
     }
+
+    @Override
+    public void add(Student student) {
+        insert(student, Student.class,15);
+    }
 }
