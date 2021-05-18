@@ -25,13 +25,23 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> search(String stuName, String StuNo, Integer sex) {
-        return studentDao.search(stuName,StuNo,sex);
+    public List<Student> search(String stuName, String StuNo, Integer sex,int pageIndex,int pageSize) {
+        return studentDao.search(stuName,StuNo,sex,pageIndex,pageSize);
     }
 
     @Override
     public void add(Student student) {
         studentDao.add(student);
+    }
+
+    @Override
+    public int total(String name, String stuno, int sex) {
+        return studentDao.total(name,stuno,sex);
+    }
+
+    @Override
+    public Student selectById(Integer id) {
+        return studentDao.selectById(id);
     }
 
 }

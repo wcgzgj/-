@@ -17,7 +17,8 @@ import java.util.List;
 
 /**
  * @ClassName StudentServlet
- * @Description TODO
+ * @Description
+ *
  * @Author FARO_Z
  * @Date 2021/5/16 下午8:27
  * @Version 1.0
@@ -41,6 +42,12 @@ public class StudentServlet extends HttpServlet {
                 return;
             case "add":
                 add(req,resp);
+                return;
+            case "edit":
+                edit(req,resp);
+                return;
+            case "findById":
+                findById(req,resp);
                 return;
             default:
                 return;
@@ -73,7 +80,7 @@ public class StudentServlet extends HttpServlet {
         String stuName = req.getParameter("stuName");
         String stuNo = req.getParameter("stuNo");
         String sex = req.getParameter("sex");
-        List<Student> students = studentService.search(stuName, stuNo, Integer.parseInt(sex));
+        List<Student> students = studentService.search(stuName, stuNo, Integer.parseInt(sex),1,5);
 
         System.out.println("查询出的结果为:"+students);
 
@@ -94,5 +101,19 @@ public class StudentServlet extends HttpServlet {
         //查询出所有年级，是为了显示班级列表
         req.setAttribute("grades",grades);
         req.getRequestDispatcher("student/add.jsp").forward(req,resp);
+    }
+
+
+    protected void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    }
+
+
+    protected void findById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String stuId = req.getParameter("stuId");
+        Student student = studentService.selectById(stuId != null && stuId.length() > 0 ? Integer.parseInt(stuId) : -1);
+
+        req.setAttribute("student",student);
+        req.getRequestDispatcher("student/edit.jsp").forward(req,resp);
     }
 }

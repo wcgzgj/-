@@ -31,14 +31,14 @@
                 <tr  width="120px;">
                     <td width="10%">学号：<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text"  name="f_goods_image" value="" />
+						<input type="text"  name="stuNo" value="${student.stuNo}" />
 					</td>
                 </tr>
 
                 <tr  width="120px;">
                     <td>姓名<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text"  name="f_goods_image" value="杨XX" />
+						<input type="text"  name="stuName" value="${student.stuName}" />
 					</td>
                 </tr>
                  
@@ -46,9 +46,9 @@
                     <td>班级<span style="color:red">*</span>：</td>
                     <td>
                         <select>
-                        	<option>一班</option>
-                            <option>二班</option>
-                            <option>三班</option>
+                        	<option value="1">一班</option>
+                            <option value="2">二班</option>
+                            <option value="3">三班</option>
                         </select>
                     </td>
                 </tr>
@@ -63,47 +63,47 @@
 				<tr>
                     <td>EMAIL：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="1332@126.com" />
+                        <input type="text" name="email" value="${student.email}" />
                     </td>                
                 </tr>
 
 				<tr>
                     <td>联系电话：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="13333333333" />
+                        <input type="text" name="phone" value="${student.phone}" />
                     </td>                
                 </tr>
 
 				<tr>
                     <td>户口所在地：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="北京"  />
+                        <input type="text" name="registered" value="${student.registered}"  />
                     </td>                
                 </tr>
 
 				<tr>
                     <td>住址：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="朝阳" />
+                        <input type="text" name="address" value="${student.address}" />
                     </td>                
                 </tr>
 				<tr>
                     <td>政治面貌：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="党员" />
+                        <input type="text" name="politics" value="${student.politics}" />
                     </td>                
                 </tr>
 				<tr>
                     <td>身份证号：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="110111111111111111111" />
+                        <input type="text" name="idNumber" value="${student.idNumber}" />
                     </td>                
                 </tr>
 				
 				<tr>
                     <td>专业：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="java" />
+                        <input type="text" name="profession" value="${student.profession}" />
                     </td>                
                 </tr>
 					
@@ -111,7 +111,7 @@
 				<tr>
                     <td>简介<span style="color:red">*</span>：</td>
                     <td>
-                        <textarea>一个新开辟领域的探讨，探讨摸索</textarea>
+                        <textarea name="introduction">${student.introdction}</textarea>
                     </td>
                 </tr>
 				<tr>

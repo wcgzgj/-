@@ -86,26 +86,26 @@
 				<tr>
                     <td>住址：</td>
                     <td>
-                        <input type="text" name="address" value="朝阳" />
+                        <input type="text" name="address" />
                     </td>                
                 </tr>
 				<tr>
                     <td>政治面貌：</td>
                     <td>
-                        <input type="text" name="politics" value="党员" />
+                        <input type="text" name="politics"  />
                     </td>                
                 </tr>
 				<tr>
                     <td>身份证号：</td>
                     <td>
-                        <input type="text" name="idNumber" value="110111111111111111111" />
+                        <input type="text" name="idNumber"  />
                     </td>                
                 </tr>
 				
 				<tr>
                     <td>专业：</td>
                     <td>
-                        <input type="text" name="profession" value="java" />
+                        <input type="text" name="profession" />
                     </td>                
                 </tr>
 					
@@ -113,7 +113,7 @@
 				<tr>
                     <td>简介<span style="color:red">*</span>：</td>
                     <td>
-                        <textarea name="introdction">一个新开辟领域的探讨，探讨摸索</textarea>
+                        <textarea name="introdction"></textarea>
                     </td>
                 </tr>
 				<tr>

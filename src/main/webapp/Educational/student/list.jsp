@@ -82,7 +82,7 @@
 							<fmt:formatDate value="${stu.regDate}" pattern="yyyy-MM-dd"></fmt:formatDate>
 						</td>
 						<td align="center">
-							<a href="edit.jsp">修改</a>
+							<a href="/Educational/student?method=findById&stuId=${stu.stuId}">修改</a>
 							<a href="#">删除</a>
 						</td>
 					</tr>
@@ -91,8 +91,13 @@
 
                     <tr>
                         <td colspan="20" style="text-align: center;">
-						<a style="text-decoration: none;" href="#">
-                            首页 上一页  ... 7 8 9 10 11 12 ... 下一页 尾页 共1234条 每页显示 10/23 </a>
+							<a style="text-decoration: none;" href="/Educational/student/search?stuName=${stuName}&stuNo=${stuNo}&sex=${sex}">首页</a>
+							<a style="text-decoration: none;" href="/Educational/student/search?pageIndex=${pageIndex-1<=1?1:pageIndex-1}&stuName=${stuName}&stuNo=${stuNo}&sex=${sex}">上一页</a>
+							<a style="text-decoration: none;" href="/Educational/student/search?pageIndex=${pageIndex+1>=totalPages?totalPages:pageIndex+1}&stuName=${stuName}&stuNo=${stuNo}&sex=${sex}">下一页</a>
+							<a style="text-decoration: none;" href="/Educational/student/search?pageIndex=${totalPages}&stuName=${stuName}&stuNo=${stuNo}&sex=${sex}">尾页</a>
+							共${total}条
+							每页显示
+							${pageIndex}/${totalPages}
                         </td>
                     </tr>
                 </tbody>
