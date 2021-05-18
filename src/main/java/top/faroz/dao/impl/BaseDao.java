@@ -234,12 +234,15 @@ public class BaseDao {
      * @param id
      */
     protected<T> boolean delete(int id,Class<T>c) {
+        return delete(id,c,"id");
+    }
 
+    protected<T> boolean delete(int id,Class<T>c,String idName) {
         StringBuilder sb = new StringBuilder();
         sb.append("delete from ")
                 .append(c.getSimpleName())
                 .append(" ")
-                .append("where id =?");
+                .append("where "+idName+" =?");
         String sql = sb.toString();
         List params = new ArrayList();
         params.add(id);
@@ -250,7 +253,6 @@ public class BaseDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         return res;
     }
 

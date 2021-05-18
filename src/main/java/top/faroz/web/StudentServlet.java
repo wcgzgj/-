@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -49,10 +50,11 @@ public class StudentServlet extends HttpServlet {
             case "findById":
                 findById(req,resp);
                 return;
+            case "deleteById":
+                deleteById(req,resp);
+                break;
             default:
                 return;
-
-
         }
     }
 
@@ -113,13 +115,23 @@ public class StudentServlet extends HttpServlet {
         String stuId = req.getParameter("stuId");
         Student student = studentService.selectById(stuId != null && stuId.length() > 0 ? Integer.parseInt(stuId) : -1);
 
-        System.out.println("学生信息为hahahahahaha:"+student);
-
         List<Grade> grades = gradeService.queryAll();
 
 
         req.setAttribute("grades",grades);
         req.setAttribute("student",student);
         req.getRequestDispatcher("student/edit.jsp").forward(req,resp);
+    }
+
+
+    protected void deleteById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String stuId = req.getParameter("stuId");
+        studentService.delete(Integer.parseInt(stuId));
+
+        resp.sendRedirect("/Educational/student/search");
+
+
+        // PrintWriter writer = resp.getWriter();
+        // writer.println("<script>location.href='/Educational/student/search;alert('删除成功！');</script>");
     }
 }

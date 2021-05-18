@@ -83,7 +83,7 @@
 						</td>
 						<td align="center">
 							<a href="/Educational/student?method=findById&stuId=${stu.stuId}">修改</a>
-							<a href="#">删除</a>
+							<a href="/Educational/student?method=deleteById&stuId=${stu.stuId}">删除</a>
 						</td>
 					</tr>
 				</c:forEach>

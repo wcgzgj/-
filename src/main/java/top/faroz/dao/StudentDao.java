@@ -20,4 +20,6 @@ public interface StudentDao {
     Student selectById(Integer stuId);
 
     void update(Student student);
+
+    void delete(Integer id);
 }

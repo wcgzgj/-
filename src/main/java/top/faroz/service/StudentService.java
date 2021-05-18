@@ -21,4 +21,6 @@ public interface StudentService {
     Student selectById(Integer id);
 
     void update(Student student);
+
+    void delete(Integer id);
 }

@@ -118,6 +118,13 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
     @Override
     public void update(Student student) {
         update(student,Student.class,"stuId",15);
+        close();
+    }
+
+    @Override
+    public void delete(Integer id) {
+        delete(id,Student.class,"stuId");
+        close();
     }
 
 
