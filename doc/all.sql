@@ -76,3 +76,69 @@ CREATE TABLE `users` (
 INSERT INTO `users` VALUES ('1', 'admin', '123456', '张三');
 INSERT INTO `users` VALUES ('2', 'user1', '123456', '李四');
 INSERT INTO `users` VALUES ('3', 'user2', '123456', '王五');
+
+
+
+
+
+
+
+# 用户表
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+     `userid` int NOT NULL AUTO_INCREMENT,
+     `loginname` varchar(10) DEFAULT NULL,
+     `password` varchar(12) DEFAULT NULL,
+     `realname` varchar(10) DEFAULT NULL,
+     `sex` int DEFAULT NULL,
+     `email` varchar(20) DEFAULT NULL,
+     `address` varchar(50) DEFAULT NULL,
+     `phone` varchar(12) DEFAULT NULL,
+     `cardid` varchar(20) DEFAULT NULL,
+     `desc` varchar(50) DEFAULT NULL,
+     `roleid` int DEFAULT NULL,
+     PRIMARY KEY (`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+
+
+# 角色表
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+    `roleid` int NOT NULL AUTO_INCREMENT,
+    `rolename` varchar(10) DEFAULT NULL,
+    `rolestate` int DEFAULT NULL COMMENT '0 禁用 1 启用',
+    PRIMARY KEY (`roleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# 中间表 （角色表和菜单表之间的关系）
+DROP TABLE IF EXISTS `middle`;
+CREATE TABLE `middle` (
+  `middleid` int NOT NULL AUTO_INCREMENT,
+  `roleid` int DEFAULT NULL,
+  `menuid` int DEFAULT NULL,
+  PRIMARY KEY (`middleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+# 菜单表（其实就是用户的权限表）
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu` (
+    `menuid` int NOT NULL AUTO_INCREMENT,
+    `menuname` varchar(255) DEFAULT NULL,
+    `upmenuid` int DEFAULT NULL,
+    `state` int DEFAULT NULL,
+    `desc` varchar(50) DEFAULT NULL,
+    `url` varchar(20) DEFAULT NULL,
+    PRIMARY KEY (`menuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+

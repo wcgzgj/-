@@ -27,7 +27,7 @@ public class UsersServiceImpl implements UsersService {
         }
 
         //密码是否匹配
-        if (!Objects.equals(user.getPassWord(),password)) {
+        if (!Objects.equals(user.getPassword(),password)) {
             return null;
         }
         return user;
