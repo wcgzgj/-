@@ -14,7 +14,9 @@ public class Role {
     private String roleName;
     private Integer roleState;
 
+    //包含多个用户信息
     private List<Users> usersList;
+    //与menu是多对多关系
     private List<Menu> menuList;
 
     public Role(Integer roleId, String roleName, Integer roleState, List<Users> usersList, List<Menu> menuList) {

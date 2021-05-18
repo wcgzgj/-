@@ -16,6 +16,7 @@ public class Menu {
     private Integer state;
     private String desc;
     private String url;
+    //与role是多对多关系
     private List<Role> roleList;
 
     public Menu(Integer menuId, String menuName, Integer upmenuId, Integer state, String desc, String url, List<Role> roleList) {

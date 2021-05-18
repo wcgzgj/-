@@ -19,12 +19,11 @@ public class UsersDaoImpl extends BaseDao implements UsersDao {
 
     @Override
     public Users selectByName(String name) {
-        String sql = "select * from users where loginName = ?";
+        String sql = "select * from users where loginname = ?";
         List params = new ArrayList();
         params.add(name);
         ResultSet rs = query(sql, params);
-        List<Users> users = ResultSetUtil.ResultSetToBean(rs, Users.class);
-        //每次用完 ResultSet 一定要记得 close()
+        List<Users> users = ResultSetUtil.ResultSetToBean(rs, Users.class,10);
         close();
         if (users==null || users.size()==0) {
             return null;

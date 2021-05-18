@@ -19,7 +19,7 @@
                     align="right">
                     当前用户：${sessionScope.user.loginName} &nbsp;&nbsp;
 
-                    <a href="users?method=logout">退出</a>
+                    <a href="power/user/users?method=logout">退出</a>
                     </td></tr></table>
         <table cellspacing=0 cellpadding=0 width="100%" border=0>
             <tr bgcolor=#1c5db6 height=4>

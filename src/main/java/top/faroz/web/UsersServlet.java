@@ -21,7 +21,7 @@ import java.io.PrintWriter;
  * @Date 2021/5/16 下午8:27
  * @Version 1.0
  **/
-@WebServlet(name = "user",urlPatterns = "/users")
+@WebServlet(name = "user",urlPatterns = "/power/user/users")
 public class UsersServlet extends HttpServlet {
 
     private UsersService usersService = new UsersServiceImpl();
@@ -50,13 +50,13 @@ public class UsersServlet extends HttpServlet {
         if (user==null) {
             resp.setContentType("text/html;charset=utf-8");
             PrintWriter writer = resp.getWriter();
-            writer.println("<script>location.href='login.jsp';alert('用户名或密码不正确！');</script>");
+            writer.println("<script>location.href='/login.jsp';alert('用户名或密码不正确！');</script>");
         } else {
             //保存用户信息
             req.getSession().setAttribute("user",user);
 
             //跳转到主页面
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("/index.jsp");
         }
     }
 
@@ -68,6 +68,8 @@ public class UsersServlet extends HttpServlet {
         // resp.sendRedirect("login.jsp");
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter writer = resp.getWriter();
-        writer.println("<script>top.location.href='login.jsp';alert('退出成功!');</script>");
+        writer.println("<script>top.location.href='/login.jsp';alert('退出成功!');</script>");
     }
+
+
 }

@@ -11,7 +11,7 @@
 </head>
 <body id="userlogin_body">
 
-<form action="users?method=login" method="post">
+<form action="power/user/users?method=login" method="post">
 <div id="user_login">
 	<dl>
 		<dd id="user_top">
