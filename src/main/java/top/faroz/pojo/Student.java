@@ -16,7 +16,7 @@ public class Student {
     private String politics; //政治面貌
     private Date regDate; //登记时间
     private Integer state;// 状态： 0 在读    1 删除
-    private String introdction; //简介
+    private String introduction; //简介
     private Integer gid; //年级编号
     private Grade grade; //对应的年级信息
 
@@ -124,12 +124,12 @@ public class Student {
         this.state = state;
     }
 
-    public String getIntrodction() {
-        return introdction;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setIntrodction(String introdction) {
-        this.introdction = introdction;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     public Integer getGid() {
@@ -164,7 +164,7 @@ public class Student {
                 ", politics='" + politics + '\'' +
                 ", regDate=" + regDate +
                 ", state=" + state +
-                ", introdction='" + introdction + '\'' +
+                ", introduction='" + introduction + '\'' +
                 ", gid=" + gid +
                 ", grade=" + grade +
                 '}';

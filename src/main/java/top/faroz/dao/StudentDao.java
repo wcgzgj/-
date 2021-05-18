@@ -18,4 +18,6 @@ public interface StudentDao {
     int total(String name,String stuno,int sex);
 
     Student selectById(Integer stuId);
+
+    void update(Student student);
 }

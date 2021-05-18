@@ -99,23 +99,27 @@ public class BaseDao {
      * @return
      */
     protected <T> int update(Object o,Class<T> c) {
-            T obj=null;
-            if (o != null) {
-                obj=(T)o;
-            }
-            Field[] fields = c.getDeclaredFields();
-            StringBuilder sb = new StringBuilder();
-            sb.append("update ")
-                    .append(c.getSimpleName().toLowerCase())
-                    .append(" ")
-                    .append("set ");
-            for (int i = 0; i < fields.length - 1; i++) {
-                sb.append(fields[i].getName().toLowerCase())
-                        .append("=?,");
-            }
-            sb.append(fields[fields.length-1].getName())
+           return update(o,c,"id",c.getDeclaredFields().length);
+    }
+
+    protected <T> int update(Object o,Class<T> c,String idName,int len) {
+        T obj=null;
+        if (o != null) {
+            obj=(T)o;
+        }
+        Field[] fields = c.getDeclaredFields();
+        StringBuilder sb = new StringBuilder();
+        sb.append("update ")
+                .append(c.getSimpleName().toLowerCase())
+                .append(" ")
+                .append("set ");
+        for (int i = 0; i < len - 1; i++) {
+            sb.append(fields[i].getName().toLowerCase())
+                    .append("=?,");
+        }
+        sb.append(fields[len-1].getName())
                 .append("=? ");
-        sb.append("where id=?");
+        sb.append("where "+idName+"=?");
         //需要根据 id，来修改对应的信息
         String sql=sb.toString();
         //System.out.println(sql);
@@ -123,7 +127,7 @@ public class BaseDao {
         //尝试设置值
         Field[] declaredFields = c.getDeclaredFields();
         List params = new ArrayList();
-        int len = declaredFields.length;
+        // int len = declaredFields.length;
         for (int i = 0; i < len; i++) {
             fields[i].setAccessible(true);
             try {

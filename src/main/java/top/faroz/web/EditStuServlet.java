@@ -1,5 +1,7 @@
 package top.faroz.web;
 
+import top.faroz.dao.StudentDao;
+import top.faroz.dao.impl.StudentDaoImpl;
 import top.faroz.pojo.Student;
 import top.faroz.service.StudentService;
 import top.faroz.service.impl.StudentServiceImpl;
@@ -14,19 +16,21 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 /**
- * @ClassName AddStuServlet
+ * @ClassName EditStuServlet
  * @Description TODO
  * @Author FARO_Z
- * @Date 2021/5/17 下午4:38
+ * @Date 2021/5/18 下午4:51
  * @Version 1.0
  **/
-@WebServlet(name = "addStu",urlPatterns = "/Educational/student/addStu")
-public class AddStuServlet extends HttpServlet {
+@WebServlet(name = "edit",urlPatterns = "/Educational/student/edit")
+public class EditStuServlet extends HttpServlet {
 
     private StudentService studentService = new StudentServiceImpl();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String sid = req.getParameter("sid");
         String stuNo = req.getParameter("stuNo");
         String stuname = req.getParameter("stuName");
         String gid = req.getParameter("gid");
@@ -41,6 +45,7 @@ public class AddStuServlet extends HttpServlet {
         String introduction = req.getParameter("introduction");
 
         Student student = new Student();
+        student.setStuId(Integer.parseInt(sid));
         student.setStuNo(stuNo);
         student.setStuName(stuname);
         student.setGid(Integer.parseInt(gid));
@@ -55,11 +60,9 @@ public class AddStuServlet extends HttpServlet {
         student.setIntroduction(introduction);
         student.setRegDate(new Date());
 
-
-        studentService.add(student);
+        studentService.update(student);
 
         PrintWriter writer = resp.getWriter();
-        writer.println("<script>location.href='/Educational/student/search;alert('新增成功！');</script>");
+        writer.println("<script>location.href='/Educational/student/search';alert('修改成功！');</script>");
     }
-
 }

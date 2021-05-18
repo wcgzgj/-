@@ -1,4 +1,5 @@
 ﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
@@ -26,7 +27,8 @@
         </div>
 </div>
 <div class="cztable">
-    <form action="list.jsp" method="post">
+    <form action="/Educational/student/edit" method="post">
+        <input type="hidden" name="sid" value="${student.stuId}">
 	<table border="1" width="100%" class="table_a">
                 <tr  width="120px;">
                     <td width="10%">学号：<span style="color:red">*</span>：</td>
@@ -45,17 +47,18 @@
                 <tr>
                     <td>班级<span style="color:red">*</span>：</td>
                     <td>
-                        <select>
-                        	<option value="1">一班</option>
-                            <option value="2">二班</option>
-                            <option value="3">三班</option>
+                        <select name="gid">
+                            <c:forEach items="${grades}" var="g">
+                                <option value="${g.gradeId}" ${g.gradeId==student.gid?'selected':''}> ${g.gradeName}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>性别<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="radio" name="gender" checked value="1" />男 <input type="radio" name="gender" value="0"/>女
+                        <input type="radio" name="sex" ${student.sex==1?'checked':''} value="1"/>男
+                        <input type="radio" name="sex" ${student.sex==0?'checked':''}  value="0"/>女
                     </td>
                 </tr>
 
@@ -111,7 +114,7 @@
 				<tr>
                     <td>简介<span style="color:red">*</span>：</td>
                     <td>
-                        <textarea name="introduction">${student.introdction}</textarea>
+                        <textarea name="introduction">${student.introduction}</textarea>
                     </td>
                 </tr>
 				<tr>

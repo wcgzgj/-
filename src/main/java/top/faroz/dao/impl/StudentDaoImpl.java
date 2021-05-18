@@ -115,5 +115,10 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
         return students.get(0);
     }
 
+    @Override
+    public void update(Student student) {
+        update(student,Student.class,"stuId",15);
+    }
+
 
 }

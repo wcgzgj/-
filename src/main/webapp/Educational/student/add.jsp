@@ -113,7 +113,7 @@
 				<tr>
                     <td>简介<span style="color:red">*</span>：</td>
                     <td>
-                        <textarea name="introdction"></textarea>
+                        <textarea name="introduction"></textarea>
                     </td>
                 </tr>
 				<tr>

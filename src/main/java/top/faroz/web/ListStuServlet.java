@@ -38,11 +38,11 @@ public class ListStuServlet extends HttpServlet {
         String pageIndex = req.getParameter("pageIndex");
         //如果没有传入 pageIndex的值，默认查询第一页
         int index = pageIndex==null?1:Integer.parseInt(pageIndex);
-        List<Student> students = studentService.search(stuName, stuNo, sex==null?-1:Integer.parseInt(sex),index,5);
+        List<Student> students = studentService.search(stuName, stuNo, sex==null||sex.length()==0?-1:Integer.parseInt(sex),index,5);
 
         //获取总条数
         // 总条数%每页条数>0?总条数/每页条数+1  总条数/每页条数
-        int total = studentService.total(stuName, stuNo, sex == null ? -1 : Integer.parseInt(sex)); //总条数
+        int total = studentService.total(stuName, stuNo, sex == null||sex.length()==0 ? -1 : Integer.parseInt(sex)); //总条数
         int totalPages = total % 5 > 0 ? total / 5 + 1 : total / 5; //总页数
 
 

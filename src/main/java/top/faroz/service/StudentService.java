@@ -19,4 +19,6 @@ public interface StudentService {
     int total(String name,String stuno,int sex);
 
     Student selectById(Integer id);
+
+    void update(Student student);
 }

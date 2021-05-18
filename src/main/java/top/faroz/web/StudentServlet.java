@@ -113,6 +113,12 @@ public class StudentServlet extends HttpServlet {
         String stuId = req.getParameter("stuId");
         Student student = studentService.selectById(stuId != null && stuId.length() > 0 ? Integer.parseInt(stuId) : -1);
 
+        System.out.println("学生信息为hahahahahaha:"+student);
+
+        List<Grade> grades = gradeService.queryAll();
+
+
+        req.setAttribute("grades",grades);
         req.setAttribute("student",student);
         req.getRequestDispatcher("student/edit.jsp").forward(req,resp);
     }
