@@ -112,9 +112,41 @@ public class RoleServlet extends HttpServlet {
     protected void roleInfo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("roleId");
         int roleId = id != null && id.length() > 0 ? Integer.parseInt(id) : 0;
-        // roleService.selectById(id);
+        //获取当前角色信息
+        Role role = roleService.selectById(roleId);
+        //获取菜单列表
+        List<Menu> menuList = menuService.getMenuList();
+        List<Menu> roleMenuList = role.getMenuList();
+
+        /**
+         * 这里，如果该位置被选过了，要有标记
+         * 不然，前端无法显示
+         */
+        for (Menu menu : menuList) {
+            for (Menu menu1 : roleMenuList) {
+                if (menu1.getMenuId().equals(menu.getMenuId())) {
+                    menu.setChecked(1);
+                }
+            }
+            //二层也要判断，有没有被选中
+            List<Menu> secondList = menu.getSecondList();
+            if (secondList!=null && secondList.size()>0) {
+                for (Menu menu1 : secondList) {
+                    for (Menu menu2 : roleMenuList) {
+                        if (menu1.getMenuId().equals(menu2.getMenuId())) {
+                            menu1.setChecked(1);
+                        }
+                    }
+                }
+            }
+        }
 
 
+        System.out.println("查出的role为:"+role);
+
+        req.setAttribute("menuList",menuList);
+        req.setAttribute("role",role);
+        req.getRequestDispatcher("/power/role/info.jsp").forward(req,resp);
     }
 
 }

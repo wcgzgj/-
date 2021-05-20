@@ -22,6 +22,8 @@ public class Menu {
     //二级列表
     private List<Menu> secondList;
 
+    private Integer checked=0;
+
     public Menu(Integer menuId, String menuName, Integer upmenuId, Integer state, String desc, String url, List<Role> roleList, List<Menu> secondList) {
         this.menuId = menuId;
         this.menuName = menuName;
@@ -98,6 +100,14 @@ public class Menu {
 
     public void setSecondList(List<Menu> secondList) {
         this.secondList = secondList;
+    }
+
+    public Integer getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Integer checked) {
+        this.checked = checked;
     }
 
     @Override

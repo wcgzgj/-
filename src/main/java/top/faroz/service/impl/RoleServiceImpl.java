@@ -55,12 +55,6 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role selectById(Integer id) {
         Role role = roleDao.selectById(id);
-
-        //查询 middle 表，找出该用户对应的所有权限(menu)
-
-
-        role.setMenuList(null);
-
         return role;
     }
 }

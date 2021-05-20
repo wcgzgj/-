@@ -16,9 +16,7 @@ public class RoleDaoTest {
 
     @Test
     public void selectByIdTest() {
-        Role r1 = roleDao.selectById(1);
-        Role r2 = roleDao.selectById(2);
-        System.out.println("r1:"+r1);
-        System.out.println("r2:"+r2);
+        System.out.println(roleDao.selectById(3));
+
     }
 }

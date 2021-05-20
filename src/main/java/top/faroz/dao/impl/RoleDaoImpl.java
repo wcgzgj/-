@@ -78,15 +78,29 @@ public class RoleDaoImpl extends BaseDao implements RoleDao {
 
     @Override
     public Role selectById(Integer id) {
-        String sql = "select * from role where roleId=?";
+        String sql = "select * from role,middle,menu where role.roleid=middle.roleid and menu.menuid=middle.menuid and role.roleid=?";
         List params = new ArrayList();
         params.add(id);
         ResultSet rs = query(sql, params);
-        List<Role> roles = ResultSetUtil.ResultSetToBean(rs, Role.class, 3);
+        List<Menu> menuList = new ArrayList<>();
+        Role role = new Role();
+       try {
+           while (rs.next()) {
+               role.setRoleId(rs.getInt("roleid"));
+               role.setRoleName(rs.getString("rolename"));
+               role.setRoleState(rs.getInt("rolestate"));
+
+               Menu menu = new Menu();
+               menu.setMenuId(rs.getInt("menuid"));
+               menu.setMenuName(rs.getString("menuname"));
+               menuList.add(menu);
+           }
+       } catch (SQLException throwables) {
+           throwables.printStackTrace();
+       }
+
+       role.setMenuList(menuList);
         close();
-        if (roles==null || roles.size()==0) {
-            return null;
-        }
-        return roles.get(0);
+       return role;
     }
 }

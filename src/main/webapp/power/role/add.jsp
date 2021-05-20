@@ -51,15 +51,6 @@
                                     </ul>
                                 </li>
                             </c:forEach>
-                        	<%--<li><input type="checkbox" name="menu"  />权限管理--%>
-                            <%--	<ul>--%>
-                            <%--    	<li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />人员管理</li>--%>
-                            <%--        <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />角色管理</li>--%>
-                            <%--        <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />菜单管理</li>--%>
-                            <%--    </ul>--%>
-                            <%--</li>--%>
-                            <%--<li><input type="checkbox" name="menu"  />个人中心</li>--%>
-                            <%--<li><input type="checkbox" name="menu"  />教务中心</li>--%>
                         </ul>
 					</td>
                 </tr>
