@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -41,15 +42,24 @@
                     <td>菜单资源<span style="color:red">*</span>：</td>
                     <td>
 						<ul>
-                        	<li><input type="checkbox" name="menu"  />权限管理
-                            	<ul>
-                                	<li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />人员管理</li>
-                                    <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />角色管理</li>
-                                    <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />菜单管理</li>
-                                </ul>
-                            </li>
-                            <li><input type="checkbox" name="menu"  />个人中心</li>
-                            <li><input type="checkbox" name="menu"  />教务中心</li>
+                            <c:forEach items="${menuList}" var="menu">
+                                <li><input type="checkbox" name="${menu.menuName}"  />${menu.menuName}
+                                    <ul>
+                                        <c:forEach items="${menu.secondList}" var="menu2">
+                                            <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="${menu2.menuName}"  />${menu2.menuName}</li>
+                                        </c:forEach>
+                                    </ul>
+                                </li>
+                            </c:forEach>
+                        	<%--<li><input type="checkbox" name="menu"  />权限管理--%>
+                            <%--	<ul>--%>
+                            <%--    	<li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />人员管理</li>--%>
+                            <%--        <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />角色管理</li>--%>
+                            <%--        <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="menu"  />菜单管理</li>--%>
+                            <%--    </ul>--%>
+                            <%--</li>--%>
+                            <%--<li><input type="checkbox" name="menu"  />个人中心</li>--%>
+                            <%--<li><input type="checkbox" name="menu"  />教务中心</li>--%>
                         </ul>
 					</td>
                 </tr>

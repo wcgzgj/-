@@ -28,7 +28,7 @@
 <div class="div_head" style="width: 100%;text-align:center;">
 		<span> <span style="float:left">当前位置是：权限管理-》角色管理</span> <span
 			style="float:right;margin-right: 8px;font-weight: bold">
-			<a style="text-decoration: none;" href="/power/role/add.jsp">【新增角色】</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a style="text-decoration: none;" href="/power/role?method=addRole">【新增角色】</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</span>
 		</span>
 	</div>

@@ -1,8 +1,11 @@
 package top.faroz.web;
 
+import top.faroz.pojo.Menu;
 import top.faroz.pojo.Role;
 import top.faroz.pojo.Users;
+import top.faroz.service.MenuService;
 import top.faroz.service.RoleService;
+import top.faroz.service.impl.MenuServiceImpl;
 import top.faroz.service.impl.RoleServiceImpl;
 import top.faroz.util.PageUtil;
 
@@ -26,13 +29,19 @@ import java.util.List;
 public class RoleServlet extends HttpServlet {
 
     private RoleService roleService = new RoleServiceImpl();
+    private MenuService menuService = new MenuServiceImpl();
+
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String method = req.getParameter("method");
         switch (method) {
             case "listRole":
                 listRole(req,resp);
+                break;
+            case "addRole":
+                addRole(req,resp);
                 break;
             default:
                 return;
@@ -60,6 +69,15 @@ public class RoleServlet extends HttpServlet {
         req.setAttribute("pageUtil",pageUtil);
         req.setAttribute("roleList",roleList);
         req.getRequestDispatcher("/power/role/list.jsp").forward(req,resp);
+    }
+
+
+    protected void addRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Menu> menuList = menuService.getMenuList();
+
+
+        req.setAttribute("menuList",menuList);
+        req.getRequestDispatcher("/power/role/add.jsp").forward(req,resp);
     }
 
 

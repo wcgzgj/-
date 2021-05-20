@@ -13,6 +13,6 @@ import java.util.List;
  **/
 public interface MenuDao {
 
-    List<Menu> getMenuList(int pageIndex, int pageSize);
+    List<Menu> getMenuList();
     
 }

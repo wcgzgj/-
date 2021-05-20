@@ -24,7 +24,7 @@
 <body>
 
 
-<div class="div_head" style="width: 100%;text-align:center;">
+    <div class="div_head" style="width: 100%;text-align:center;">
 		<span> <span style="float:left">当前位置是：权限管理-》人员管理</span> <span
 			style="float:right;margin-right: 8px;font-weight: bold">
           
@@ -37,6 +37,7 @@
 <div class="morebt">
  
 </div>
+
  <div class="cztable" style="width: 100%;">
         
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -119,23 +120,20 @@
                   <input type='button' value='Go' onclick="page_searchIndex()"/>
               </div>
           </div>
-            <script>
-                function page_searchIndex() {
-                    var searchText = document.getElementById('john_Page_Search');
-                    var searchIndex = searchText != null && searchText.value != '' ? parseInt(searchText.value) : 0;
-                    if(searchIndex > 0 && searchIndex <= 3) {
-                        window.location='StudentMaterial.aspx?page=' + searchIndex;
-                    } else {
-                        alert('需要跳转的页码不能超出范围！');
-                    }
-                }
-            </script>
+            <%--<script>--%>
+            <%--    function page_searchIndex() {--%>
+            <%--        var searchText = document.getElementById('john_Page_Search');--%>
+            <%--        var searchIndex = searchText != null && searchText.value != '' ? parseInt(searchText.value) : 0;--%>
+            <%--        if(searchIndex > 0 && searchIndex <= 3) {--%>
+            <%--            window.location='StudentMaterial.aspx?page=' + searchIndex;--%>
+            <%--        } else {--%>
+            <%--            alert('需要跳转的页码不能超出范围！');--%>
+            <%--        }--%>
+            <%--    }--%>
+            <%--</script>--%>
         </div>
     </div>
 
-        
-        
-      
     </div>
 </body>
 </html>

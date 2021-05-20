@@ -78,7 +78,7 @@
                                 <img height=9 src="./img/menu_icon.gif" width=9>
                             </td>
                             <td>
-                                <a class=menuchild  href="power/user/users?method=userManage"  target="right">用户管理</a>
+                                <a class=menuchild  href="power/user/users/userManage"  target="right">用户管理</a>
                             </td>
                         </tr>
 

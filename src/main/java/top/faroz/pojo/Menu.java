@@ -19,7 +19,10 @@ public class Menu {
     //与role是多对多关系
     private List<Role> roleList;
 
-    public Menu(Integer menuId, String menuName, Integer upmenuId, Integer state, String desc, String url, List<Role> roleList) {
+    //二级列表
+    private List<Menu> secondList;
+
+    public Menu(Integer menuId, String menuName, Integer upmenuId, Integer state, String desc, String url, List<Role> roleList, List<Menu> secondList) {
         this.menuId = menuId;
         this.menuName = menuName;
         this.upmenuId = upmenuId;
@@ -27,6 +30,7 @@ public class Menu {
         this.desc = desc;
         this.url = url;
         this.roleList = roleList;
+        this.secondList = secondList;
     }
 
     public Menu() {
@@ -88,6 +92,14 @@ public class Menu {
         this.roleList = roleList;
     }
 
+    public List<Menu> getSecondList() {
+        return secondList;
+    }
+
+    public void setSecondList(List<Menu> secondList) {
+        this.secondList = secondList;
+    }
+
     @Override
     public String toString() {
         return "Menu{" +
@@ -98,6 +110,7 @@ public class Menu {
                 ", desc='" + desc + '\'' +
                 ", url='" + url + '\'' +
                 ", roleList=" + roleList +
+                ", secondList=" + secondList +
                 '}';
     }
 }

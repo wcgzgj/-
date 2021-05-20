@@ -1,7 +1,5 @@
 package top.faroz.web;
 
-import javafx.beans.value.WritableObjectValue;
-import javafx.scene.layout.BackgroundRepeat;
 import top.faroz.pojo.Users;
 import top.faroz.service.UsersService;
 import top.faroz.service.impl.UsersServiceImpl;
@@ -30,11 +28,9 @@ public class UsersServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("进入servlet！！！！");
         String method = req.getParameter("method");
         switch (method) {
-            case "login":
-                login(req,resp);
-                break;
             case "logout":
                 logout(req,resp);
                 break;
@@ -46,29 +42,12 @@ public class UsersServlet extends HttpServlet {
         }
     }
 
-    protected void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String userName = req.getParameter("TxtUserName");
-        String password = req.getParameter("TxtPassword");
-        Users user = usersService.login(userName, password);
-        System.out.println("user信息为:"+user);
-        //登录失败
-        if (user==null) {
-            resp.setContentType("text/html;charset=utf-8");
-            PrintWriter writer = resp.getWriter();
-            writer.println("<script>location.href='/login.jsp';alert('用户名或密码不正确！');</script>");
-        } else {
-            //保存用户信息
-            req.getSession().setAttribute("user",user);
-
-            //跳转到主页面
-            resp.sendRedirect("/index.jsp");
-        }
-    }
 
     protected void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //清空session
         req.getSession().invalidate();
 
+        System.out.println("登出成功！！！");
         //跳转到登录页面
         // resp.sendRedirect("login.jsp");
         resp.setContentType("text/html;charset=utf-8");
