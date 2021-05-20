@@ -57,4 +57,10 @@ public class RoleDaoImpl extends BaseDao implements RoleDao {
         }
         return total;
     }
+
+    @Override
+    public int insert(Role role) {
+        boolean insert = insert(role, Role.class,3);
+        return 1;
+    }
 }

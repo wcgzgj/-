@@ -29,4 +29,9 @@ public class RoleServiceImpl implements RoleService {
     public int total() {
         return roleDao.total();
     }
+
+    @Override
+    public void insert(Role role) {
+        roleDao.insert(role);
+    }
 }

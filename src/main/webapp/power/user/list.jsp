@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
@@ -14,6 +14,7 @@
     <script src="../../Script/jBox/i18n/jquery.jBox-zh-CN.js" type="text/javascript"></script>
     <script src="../../Script/Common.js" type="text/javascript"></script>
     <script src="../../Script/Data.js" type="text/javascript"></script>
+
     <script>
 		function del(){
 			confirm("确定删除？");
@@ -29,7 +30,7 @@
 			style="float:right;margin-right: 8px;font-weight: bold">
           
             <a style="text-decoration: none;" href="javascript:alert('操作成功！');">【批量删除】</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a style="text-decoration: none;" href="add.jsp">【新增人员】</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a style="text-decoration: none;" href="/power/user/add.jsp">【新增人员】</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</span>
 		</span>
 	</div>
@@ -120,20 +121,8 @@
                   <input type='button' value='Go' onclick="page_searchIndex()"/>
               </div>
           </div>
-            <%--<script>--%>
-            <%--    function page_searchIndex() {--%>
-            <%--        var searchText = document.getElementById('john_Page_Search');--%>
-            <%--        var searchIndex = searchText != null && searchText.value != '' ? parseInt(searchText.value) : 0;--%>
-            <%--        if(searchIndex > 0 && searchIndex <= 3) {--%>
-            <%--            window.location='StudentMaterial.aspx?page=' + searchIndex;--%>
-            <%--        } else {--%>
-            <%--            alert('需要跳转的页码不能超出范围！');--%>
-            <%--        }--%>
-            <%--    }--%>
-            <%--</script>--%>
         </div>
-    </div>
 
-    </div>
+
 </body>
 </html>

@@ -17,4 +17,11 @@ public interface RoleDao {
     List<Role> getRoleList(int pageIndex, int pageSize);
 
     int total();
+
+    /**
+     * 插入角色信息
+     * @param role
+     * @return
+     */
+    int insert(Role role);
 }

@@ -12,4 +12,6 @@ public interface RoleService {
 
 
     int total();
+
+    void insert(Role role);
 }

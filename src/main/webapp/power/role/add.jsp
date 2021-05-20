@@ -34,7 +34,7 @@
                 <tr  width="120px;">
                     <td width="120px">角色名：<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text"  name="f_goods_image" value="管理员" />
+						<input type="text"  name="roleName" />
 					</td>
                 </tr>
 
@@ -43,10 +43,10 @@
                     <td>
 						<ul>
                             <c:forEach items="${menuList}" var="menu">
-                                <li><input type="checkbox" name="${menu.menuName}"  />${menu.menuName}
+                                <li><input type="checkbox" name="${menu.menuName}" value="${menu.menuId}" />${menu.menuName}
                                     <ul>
                                         <c:forEach items="${menu.secondList}" var="menu2">
-                                            <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="${menu2.menuName}"  />${menu2.menuName}</li>
+                                            <li>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="${menu2.menuName}"  value="${menu2.menuId}" />${menu2.menuName}</li>
                                         </c:forEach>
                                     </ul>
                                 </li>
