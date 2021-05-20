@@ -5,6 +5,7 @@ import top.faroz.dao.impl.UsersDaoImpl;
 import top.faroz.pojo.Users;
 import top.faroz.service.UsersService;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -31,5 +32,15 @@ public class UsersServiceImpl implements UsersService {
             return null;
         }
         return user;
+    }
+
+    @Override
+    public List<Users> getUsesList(int pageIndex, int pageSize) {
+        return usersDao.getUsesList(pageIndex,pageSize);
+    }
+
+    @Override
+    public int total() {
+        return usersDao.total();
     }
 }
