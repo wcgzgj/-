@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,6 +45,12 @@ public class RoleServlet extends HttpServlet {
             case "addRole":
                 addRole(req,resp);
                 break;
+            case "add":
+                add(req,resp);
+                break;
+            case "roleInfo":
+                roleInfo(req,resp);
+                break;
             default:
                 return;
         }
@@ -52,6 +60,9 @@ public class RoleServlet extends HttpServlet {
     protected void listRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String index = req.getParameter("pageIndex");
         int pageIndex=index!=null && index.length()>0?Integer.parseInt(index):1;
+        if (pageIndex<=0) {
+            pageIndex=1;
+        }
 
         List<Role> roleList = roleService.getRoleList(pageIndex, 5);
         int total = roleService.total();
@@ -80,5 +91,30 @@ public class RoleServlet extends HttpServlet {
         req.getRequestDispatcher("/power/role/add.jsp").forward(req,resp);
     }
 
+    protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String roleName = req.getParameter("roleName");
+        String[] menuIds = req.getParameterValues("menuId");
+        String state = req.getParameter("state");
+        int roleState = state != null || state.length() > 0 ? Integer.parseInt(state) : 1;
+
+
+        Role role = new Role();
+        role.setRoleName(roleName);
+        role.setRoleState(roleState);
+
+        roleService.insert(role,menuIds);
+
+        req.getRequestDispatcher("/power/role?method=listRole").forward(req,resp);
+    }
+
+
+
+    protected void roleInfo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("roleId");
+        int roleId = id != null && id.length() > 0 ? Integer.parseInt(id) : 0;
+        // roleService.selectById(id);
+
+
+    }
 
 }

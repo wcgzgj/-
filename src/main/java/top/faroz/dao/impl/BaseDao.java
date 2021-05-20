@@ -3,10 +3,7 @@ package top.faroz.dao.impl;
 import com.alibaba.druid.pool.DruidDataSource;
 
 import java.lang.reflect.Field;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -50,7 +47,7 @@ public class BaseDao {
     private int count=0;
 
     private Connection conn = null;
-    private PreparedStatement stmt = null;
+    protected PreparedStatement stmt = null;
 
     /**
      * 获取数据库连接
@@ -74,7 +71,7 @@ public class BaseDao {
     protected PreparedStatement getStatement(String sql, List list) {
         getConnection();
         try {
-            stmt = conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -88,6 +85,11 @@ public class BaseDao {
             }
         }
         return stmt;
+    }
+
+    protected PreparedStatement getStatement(String sql) {
+        PreparedStatement statement = getStatement(sql, null);
+        return statement;
     }
 
     /**

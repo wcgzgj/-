@@ -24,4 +24,6 @@ public interface RoleDao {
      * @return
      */
     int insert(Role role);
+
+    Role selectById(Integer id);
 }

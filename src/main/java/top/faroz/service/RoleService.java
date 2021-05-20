@@ -10,8 +10,9 @@ public interface RoleService {
 
     List<Role> getRoleList(int pageIndex, int pageSize);
 
-
     int total();
 
-    void insert(Role role);
+    void insert(Role role,String[] menuIds);
+
+    Role selectById(Integer id);
 }

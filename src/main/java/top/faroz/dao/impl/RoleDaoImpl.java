@@ -1,8 +1,8 @@
 package top.faroz.dao.impl;
 
 import top.faroz.dao.RoleDao;
+import top.faroz.pojo.Menu;
 import top.faroz.pojo.Role;
-import top.faroz.pojo.Users;
 import top.faroz.util.ResultSetUtil;
 
 import java.sql.ResultSet;
@@ -61,6 +61,32 @@ public class RoleDaoImpl extends BaseDao implements RoleDao {
     @Override
     public int insert(Role role) {
         boolean insert = insert(role, Role.class,3);
-        return 1;
+        List<Menu> menuList = role.getMenuList();
+        int key=0;
+        try {
+            ResultSet keys = stmt.getGeneratedKeys();
+            while (keys.next()) {
+                key=keys.getInt(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            close();
+        }
+        return key;
+    }
+
+    @Override
+    public Role selectById(Integer id) {
+        String sql = "select * from role where roleId=?";
+        List params = new ArrayList();
+        params.add(id);
+        ResultSet rs = query(sql, params);
+        List<Role> roles = ResultSetUtil.ResultSetToBean(rs, Role.class, 3);
+        close();
+        if (roles==null || roles.size()==0) {
+            return null;
+        }
+        return roles.get(0);
     }
 }
