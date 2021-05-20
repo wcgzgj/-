@@ -26,7 +26,7 @@ public class UsersDaoImpl extends BaseDao implements UsersDao {
         List params = new ArrayList();
         params.add(name);
         ResultSet rs = query(sql, params);
-        List<Users> users = ResultSetUtil.ResultSetToBean(rs, Users.class,10);
+        List<Users> users = ResultSetUtil.ResultSetToBean(rs, Users.class,11);
         close();
         if (users==null || users.size()==0) {
             return null;

@@ -252,8 +252,6 @@ public class RoleServlet extends HttpServlet {
         role.setRoleState(roleState);
 
 
-
-        // roleService.insert(role,menuIds);
         roleService.update(role,menuIds);
 
         resp.sendRedirect("/power/role?method=listRole");

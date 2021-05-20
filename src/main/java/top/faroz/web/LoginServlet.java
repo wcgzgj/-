@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
         String userName = req.getParameter("TxtUserName");
         String password = req.getParameter("TxtPassword");
         Users user = usersService.login(userName, password);
-        System.out.println("user信息为:"+user);
         //登录失败
         if (user==null) {
             resp.setContentType("text/html;charset=utf-8");
@@ -38,6 +37,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             //保存用户信息
             req.getSession().setAttribute("user",user);
+            System.out.println("user的role信息为:"+user.getRole());
 
             //跳转到主页面
             resp.sendRedirect("/index.jsp");

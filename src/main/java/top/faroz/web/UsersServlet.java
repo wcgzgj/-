@@ -28,7 +28,6 @@ public class UsersServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("进入servlet！！！！");
         String method = req.getParameter("method");
         switch (method) {
             case "logout":
@@ -47,7 +46,6 @@ public class UsersServlet extends HttpServlet {
         //清空session
         req.getSession().invalidate();
 
-        System.out.println("登出成功！！！");
         //跳转到登录页面
         // resp.sendRedirect("login.jsp");
         resp.setContentType("text/html;charset=utf-8");

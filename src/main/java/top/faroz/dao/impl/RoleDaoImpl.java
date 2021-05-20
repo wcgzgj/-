@@ -93,6 +93,10 @@ public class RoleDaoImpl extends BaseDao implements RoleDao {
                Menu menu = new Menu();
                menu.setMenuId(rs.getInt("menuid"));
                menu.setMenuName(rs.getString("menuname"));
+               menu.setState(rs.getInt("state"));
+               menu.setUrl(rs.getString("url"));
+               menu.setUpmenuId(rs.getInt("upmenuid"));
+
                menuList.add(menu);
            }
        } catch (SQLException throwables) {
