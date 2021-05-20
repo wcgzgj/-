@@ -28,4 +28,6 @@ public interface RoleDao {
     Role selectById(Integer id);
 
     void deleteById(Integer id);
+
+    void update(Role role);
 }

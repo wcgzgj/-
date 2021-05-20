@@ -17,4 +17,6 @@ public interface RoleService {
     Role selectById(Integer id);
 
     void deleteById(Integer id);
+
+    void update(Role role,String[] menuIds);
 }

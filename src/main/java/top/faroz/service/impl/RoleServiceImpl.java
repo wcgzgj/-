@@ -5,7 +5,6 @@ import top.faroz.dao.RoleDao;
 import top.faroz.dao.impl.MiddleDaoImpl;
 import top.faroz.dao.impl.RoleDaoImpl;
 import top.faroz.pojo.Role;
-import top.faroz.pojo.Users;
 import top.faroz.service.RoleService;
 
 import java.util.List;
@@ -61,5 +60,22 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void deleteById(Integer id) {
         roleDao.deleteById(id);
+        middleDao.deleteByRoleId(id);
+    }
+
+    @Override
+    public void update(Role role, String[] menuIds) {
+        Integer[] ids = new Integer[menuIds.length];
+        for (int i = 0; i < menuIds.length; i++) {
+            ids[i]=Integer.parseInt(menuIds[i]);
+        }
+        //先删除middle表中的关系
+        middleDao.deleteByRoleId(role.getRoleId());
+        //再将新的关系，插入middle表中
+        middleDao.insert(role.getRoleId(),ids);
+
+        //更新 role表中的信息
+        roleDao.update(role);
+
     }
 }

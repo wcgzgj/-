@@ -30,6 +30,22 @@ public class MiddleDaoImpl extends BaseDao implements MiddleDao {
             statement.executeBatch();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } finally {
+            close();
+        }
+    }
+
+    @Override
+    public void deleteByRoleId(Integer roleId) {
+        String sql = "delete from middle where roleId=?";
+        PreparedStatement stmt = getStatement(sql);
+        try {
+            stmt.setInt(1,roleId);
+            stmt.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            close();
         }
     }
 }

@@ -54,6 +54,12 @@ public class RoleServlet extends HttpServlet {
             case "deleteRole":
                 deleteRole(req,resp);
                 break;
+            case "toUpdateView":
+                toUpdateView(req,resp);
+                break;
+            case "updateRole":
+                updateRole(req,resp);
+                break;
             default:
                 return;
         }
@@ -153,6 +159,14 @@ public class RoleServlet extends HttpServlet {
     }
 
 
+    /**
+     * 删除 role 之前
+     * 一定要把 middle 中的相关信息 ，先给删除了
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void deleteRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("roleId");
         int roleId = id != null && id.length() > 0 ? Integer.parseInt(id) : 0;
@@ -161,5 +175,89 @@ public class RoleServlet extends HttpServlet {
 
         resp.sendRedirect("/power/role?method=listRole");
     }
+
+
+    /**
+     * 跳转到更新界面
+     * 要展示当前用户已知的信息
+     * 可以参考 Info页面
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void toUpdateView(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("roleId");
+        int roleId = id != null && id.length() > 0 ? Integer.parseInt(id) : 0;
+        //获取当前角色信息
+        Role role = roleService.selectById(roleId);
+        //获取菜单列表
+        List<Menu> menuList = menuService.getMenuList();
+        List<Menu> roleMenuList = role.getMenuList();
+
+        /**
+         * 这里，如果该位置被选过了，要有标记
+         * 不然，前端无法显示
+         */
+        for (Menu menu : menuList) {
+            for (Menu menu1 : roleMenuList) {
+                if (menu1.getMenuId().equals(menu.getMenuId())) {
+                    menu.setChecked(1);
+                }
+            }
+            //二层也要判断，有没有被选中
+            List<Menu> secondList = menu.getSecondList();
+            if (secondList!=null && secondList.size()>0) {
+                for (Menu menu1 : secondList) {
+                    for (Menu menu2 : roleMenuList) {
+                        if (menu1.getMenuId().equals(menu2.getMenuId())) {
+                            menu1.setChecked(1);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        req.setAttribute("menuList",menuList);
+        req.setAttribute("role",role);
+        req.getRequestDispatcher("/power/role/edit.jsp").forward(req,resp);
+    }
+
+
+
+    /**
+     * 修改用户信息
+     * 在修改 role信息的同时，
+     * 还要同时修改 middle 表
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void updateRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String id = req.getParameter("roleId");
+        int roleId = Integer.parseInt(id);
+        String roleName = req.getParameter("roleName");
+        String[] menuIds = req.getParameterValues("menuId");
+        String state = req.getParameter("state");
+        int roleState = state != null || state.length() > 0 ? Integer.parseInt(state) : 1;
+
+
+        Role role = new Role();
+        role.setRoleId(roleId);
+        role.setRoleName(roleName);
+        role.setRoleState(roleState);
+
+
+
+        // roleService.insert(role,menuIds);
+        roleService.update(role,menuIds);
+
+        resp.sendRedirect("/power/role?method=listRole");
+    }
+
 
 }
