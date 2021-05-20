@@ -15,4 +15,6 @@ public interface RoleService {
     void insert(Role role,String[] menuIds);
 
     Role selectById(Integer id);
+
+    void deleteById(Integer id);
 }

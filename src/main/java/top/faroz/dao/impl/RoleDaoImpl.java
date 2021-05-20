@@ -103,4 +103,9 @@ public class RoleDaoImpl extends BaseDao implements RoleDao {
         close();
        return role;
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        delete(id,Role.class,"roleId");
+    }
 }

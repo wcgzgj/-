@@ -51,6 +51,9 @@ public class RoleServlet extends HttpServlet {
             case "roleInfo":
                 roleInfo(req,resp);
                 break;
+            case "deleteRole":
+                deleteRole(req,resp);
+                break;
             default:
                 return;
         }
@@ -147,6 +150,16 @@ public class RoleServlet extends HttpServlet {
         req.setAttribute("menuList",menuList);
         req.setAttribute("role",role);
         req.getRequestDispatcher("/power/role/info.jsp").forward(req,resp);
+    }
+
+
+    protected void deleteRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("roleId");
+        int roleId = id != null && id.length() > 0 ? Integer.parseInt(id) : 0;
+
+        roleService.deleteById(roleId);
+
+        resp.sendRedirect("/power/role?method=listRole");
     }
 
 }
